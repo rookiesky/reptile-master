@@ -16,7 +16,7 @@ class Web extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['web_id','link'];
+    protected $fillable = ['name','link','rule','total','sort','title_rule','sort_rule','content_rule','tag_rule','date_rule','username_rule','api_type','api','status','type'];
 
 
     public function addAll($data)

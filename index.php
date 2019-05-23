@@ -2,20 +2,21 @@
 include "init.php";
 
 
-$data = [
+$web = [
     'link' => 'http://blog.chedushi.com/archives/category/php/page/1',
     'rule' => '.entry-header>h2>a&&&href',
     'total' => 0,
     'sort' => '',
     'id' => 1,
-    'title_rule' => '',
-     'sort_rule' => '',
-     'content_rule' => '',
-     'tag_rule' => '',
-     'date_rule' => '',
-     'username_rule' => '',
-     'api' => '',
-      'status' => 0
+    'title_rule' => '.entry-header>h1&&&text',
+    'sort_rule' => '.entry-footer>.row>.cattegories>span>a&&&text',
+    'content_rule' => '.post-content>.entry-content&&&html',
+    'tag_rule' => '.entry-footer>.row>.tags>span>a&&&text',
+    'date_rule' => '.entry-date>a>time&&&datetime',
+    'username_rule' => '',
+    'api_type' => 'typecho',
+    'api' => '',
+    'status' => 0
 ];
 
 
@@ -26,5 +27,38 @@ $data = [
     'web_id' => 1
 ];
 
+if(isset($_GET['type'])){
+   $controller = new \App\Controller\ReptileController();
 
-(new \App\Reptile\ReptileController())->run($data);
+    switch ($_GET['type']){
+
+        case 'create':
+            $controller->create();
+            break;
+        case 'test-list':
+            $controller->testList();
+            break;
+        case 'test-content':
+            $controller->testContent();
+            break;
+        case 'create-store':
+            $controller->store();
+            break;
+        case 'list':
+            $controller->index();
+            break;
+        case 'show':
+            $controller->show();
+            break;
+        case 'update':
+            $controller->update();
+            break;
+        case 'delete':
+            $controller->destroy();
+            break;
+    }
+
+}
+
+
+//(new \App\Reptile\ReptileController())->run($data,$web);

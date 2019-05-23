@@ -69,12 +69,12 @@ class ReptileList
      */
     protected function collect($link)
     {
-        $web = $this->web;
+        $web_id = isset($this->web['id']) ? $this->web['id'] : 0;
         try{
             return QueryList::get($link)->rules([
                 'link' => $this->rule()
-            ])->queryData(function ($item) use($web) {
-                $item['web_id'] = $web['id'];
+            ])->queryData(function ($item) use($web_id) {
+                $item['web_id'] = $web_id;
                 return $item;
             });
         }catch (\Exception $e){
