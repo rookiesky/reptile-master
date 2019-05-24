@@ -53,7 +53,6 @@ class RequestApi extends RequestBase
         $post['author'] = isset($data[0]['username']) ? $data[0]['username'] : '';
         $post['date'] = isset($data[0]['date']) ? $this->dateFormat($data[0]['date']) : '';
         $post['keywords'] = isset($data[0]['tag']) ?  $this->sortAndTagFormat($data,'tag') : '';
-        dd($post);
         return $post;
     }
 
