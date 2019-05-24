@@ -12,5 +12,9 @@ $web = collect($web)->toArray();
 
 foreach ($web as $item){
     $reptile->run($item);
-    $model->where('id',$item['id'])->update(['status' => 1]);
+
+    if($item['total'] == 1){
+        $model->where('id',$item['id'])->update(['status' => 1]);
+    }
+
 }
