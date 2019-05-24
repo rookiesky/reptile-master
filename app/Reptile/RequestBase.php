@@ -16,7 +16,7 @@ class RequestBase
      $val = preg_replace('# #','',$date);
 
      if(preg_match($rules,$val)){
-         return strtotime(str_replace('月','-',str_replace('年','-',rtrim($val,'日'))));
+         return str_replace('月','-',str_replace('年','-',rtrim($val,'日')));
      }
      return $date;
  }
