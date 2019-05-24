@@ -12,7 +12,7 @@ if(DEBUG == true){
     $whoops->register();
 }
 
-//Sentry\init(['dsn' => 'https://1327aabf127042ee838f4a4ebd8768ac@sentry.io/1461222' ]);
+Sentry\init(['dsn' => 'https://1327aabf127042ee838f4a4ebd8768ac@sentry.io/1461222' ]);
 
 $capsule = new \Illuminate\Database\Capsule\Manager();
 

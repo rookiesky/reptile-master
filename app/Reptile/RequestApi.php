@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
  *
  * @package \App\Reptile
  */
-class RequestApi
+class RequestApi extends RequestBase
 {
     protected $web = null;
 
@@ -51,9 +51,9 @@ class RequestApi
         $post['title'] = $data[0]['title'];
         $post['content'] = $data[0]['content'];
         $post['author'] = isset($data[0]['username']) ? $data[0]['username'] : '';
-        $post['date'] = isset($data[0]['date']) ? $data[0]['date'] : '';
+        $post['date'] = isset($data[0]['date']) ? $this->dateFormat($data[0]['date']) : '';
         $post['keywords'] = isset($data[0]['tag']) ?  $this->sortAndTagFormat($data,'tag') : '';
-
+        dd($post);
         return $post;
     }
 
