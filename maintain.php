@@ -3,9 +3,9 @@ include "init.php";
 
 $model = new \App\Models\Web();
 
-$web = $model::where('type',1)->where('status',0)->get();
+$web = $model::where('type',2)->where('status',0)->get();
 
-$reptile = new \App\Reptile\ReptileList();
+$reptile = new \App\Reptile\MaintainReptile();
 
 $web = collect($web)->toArray();
 
