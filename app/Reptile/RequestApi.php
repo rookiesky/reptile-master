@@ -47,14 +47,24 @@ class RequestApi
 
     protected function typecho($data)
     {
-        $post['category'] = isset($data[0]['sort']) ? $data[0]['sort'] : '';
+        $post['category'] = isset($data[0]['sort']) ? $this->sortAndTagFormat($data,'sort') : '';
         $post['title'] = $data[0]['title'];
         $post['content'] = $data[0]['content'];
         $post['author'] = isset($data[0]['username']) ? $data[0]['username'] : '';
         $post['date'] = isset($data[0]['date']) ? $data[0]['date'] : '';
-        $post['keywords'] = isset($data[0]['tag']) ? $data[0]['tag'] : '';
+        $post['keywords'] = isset($data[0]['tag']) ?  $this->sortAndTagFormat($data,'tag') : '';
 
         return $post;
+    }
+
+    protected function sortAndTagFormat($data,$type)
+    {
+        $new_data = array_column($data,$type);
+        $string = implode(',',$new_data);
+        if(empty($string)){
+            return '';
+        }
+        return $string;
     }
 
 }
