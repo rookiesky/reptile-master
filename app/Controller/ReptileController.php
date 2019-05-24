@@ -52,6 +52,19 @@ class ReptileController extends Controller
         return $this->response(null,'NOT',404);
     }
 
+    public function copay()
+    {
+        if(isset($_GET['id']) && $_GET['id'] != ''){
+
+            $web = Web::find($_GET['id']);
+            if(empty($web)){
+                return $this->response(null,'NOT',404);
+            }
+            return $this->view('copay',compact('web'));
+        }
+        return $this->response(null,'NOT',404);
+    }
+
     public function update()
     {
         $data = $_POST;

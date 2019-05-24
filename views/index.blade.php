@@ -27,6 +27,7 @@
             <td>{{ $item->status }}</td>
             <td>
                 <a href="/index.php?type=show&id={{ $item->id }}" class="btn btn-primary">编辑</a>
+                <a href="/index.php?type=copay&id={{ $item->id }}" class="btn btn-info">复制</a>
                 <button type="button" class="btn btn-danger" data-id={{ $item->id }}>删除</button>
             </td>
         </tr>

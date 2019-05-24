@@ -27,6 +27,7 @@
             <td><?php echo e($item->status); ?></td>
             <td>
                 <a href="/index.php?type=show&id=<?php echo e($item->id); ?>" class="btn btn-primary">编辑</a>
+                <a href="/index.php?type=copay&id=<?php echo e($item->id); ?>" class="btn btn-info">复制</a>
                 <button type="button" class="btn btn-danger" data-id=<?php echo e($item->id); ?>>删除</button>
             </td>
         </tr>

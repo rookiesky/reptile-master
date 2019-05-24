@@ -56,6 +56,9 @@ if(isset($_GET['type'])){
         case 'delete':
             $controller->destroy();
             break;
+        case 'copay':
+            $controller->copay();
+            break;
     }
 
 }
