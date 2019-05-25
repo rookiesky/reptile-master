@@ -13,6 +13,7 @@ class RequestBase
  protected function dateFormat($date)
  {
      $rules = '/^(\d{4}年\d{2}月\d{2}日)?$/';
+
      $val = preg_replace('# #','',$date);
 
      if(preg_match($rules,$val)){

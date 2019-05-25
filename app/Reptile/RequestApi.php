@@ -43,6 +43,23 @@ class RequestApi extends RequestBase
         if($this->web['api_type'] == 'typecho'){
             return $this->typecho($data);
         }
+        if($this->web['api_type'] == 'wordpress'){
+            return $this->wordpress($data);
+        }
+    }
+
+
+    protected function wordpress($data)
+    {
+        $post['post_title'] = $data[0]['title'];
+        $post['post_content'] = $data[0]['content'];
+        $post['post_category'] = isset($data[0]['sort']) ? $this->sortAndTagFormat($data,'sort') : '';
+        $post['post_date'] = isset($data[0]['date']) ? $this->dateFormat($data[0]['date']) : date('Y-m-d H:i:s');
+        $post['post_author'] = isset($data[0]['username']) ? $data[0]['username'] : '';
+        $post['post_meta_list'] = '';
+        $post['tag'] = isset($data[0]['tag']) ?  $this->sortAndTagFormat($data,'tag') : '';
+
+        return $post;
     }
 
     protected function typecho($data)
